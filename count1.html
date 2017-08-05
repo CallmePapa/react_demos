@@ -1,10 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <style type="text/css">
+
+        .all{
+            margin:auto;
+            border: 10px;
+            background-color: #5cb85c;
+            width: 100px;
+            height:100px;
+        }
+        span{
+            position:relative;
+            top:10px;
+            left:30px;
+            font-size: 60px;
+
+        }
+        .buttonstyle{
+            position: relative;
+            top: 32px;
+            width: 100px;
+        }
+        button{
+            font-size: 16px;
+            color: #46b8da;
+        }
+
+    </style>
 </head>
 <body>
-$END$
+<div id="example"></div>
+<script type="text/babel">
+
+
+    class  Counter extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {value: 0};
+
+            this.plus = this.plus.bind(this);
+            this.minus = this.minus.bind(this);
+            this.huifu = this.huifu.bind(this);
+        }
+
+        plus() {
+            const count=this.state.value;
+            this.setState({
+                value:count+1
+            });
+        }
+
+        minus() {
+            const count=this.state.value;
+            this.setState({
+                value:count - 1
+            });
+        }
+
+        huifu() {
+            this.setState({
+                value:0
+            });
+        }
+
+        render() {
+            return (<div className="all">
+                <span>{this.state.value}</span>
+                <div className="buttonstyle">
+                <button onClick={this.plus}>+</button>
+                    <button onClick={this.huifu}>reast</button>
+                <button onClick={this.minus}>-</button>
+                </div>
+            </div>)
+        }
+    }
+
+    ReactDOM.render(
+            <div>
+                <Counter/>
+            </div>,
+        document.getElementById('example')
+    );
+
+</script>
 </body>
 </html>
